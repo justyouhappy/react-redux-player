@@ -1,0 +1,29 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "script",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true
+    },
+    "plugins": ["eslint-plugin-html"],
+    "rules": {
+        "no-undef": "error",
+        "no-cond-assign": "error",
+        "no-extra-boolean-cast": "error",
+        "curly": "error",
+        "no-else-return": "error",
+        "no-multi-spaces": "error",
+        "vars-on-top": "error",
+        "block-spacing": "error",
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "key-spacing": ["error", { "afterColon": true }],
+        "indent": ["error", "tab"],
+        "no-trailing-spaces":"error",
+        "space-infix-ops": ["error", {"int32Hint": false}],
+        "space-before-blocks": "error"
+    }
+}
