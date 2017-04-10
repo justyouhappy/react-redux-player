@@ -1,6 +1,6 @@
 {
     "parserOptions": {
-        "ecmaVersion": 7,
+        "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
@@ -27,6 +27,8 @@
         "space-before-blocks": "error"
     },
     "globals": {
-        "Promise": true
+        "Promise": true,
+        "require": true,
+        "module": true,
     }
 }

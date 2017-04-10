@@ -9,7 +9,7 @@ export function fetchdata(url, config) {
 		})
 	}else if(config.method === 'POST' || config.method === 'post'){
 		fetchConfig = Object.assign(fetchConfig, {
-			method: 'POST',//不解释，参考ajax
+			method: 'POST', //不解释，参考ajax
 			hearders: {
 				'Content-Type': 'application/json',//和ajax一样，需配置服务端解析data格式
 			},

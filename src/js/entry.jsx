@@ -6,11 +6,12 @@ import React from 'react';
 import createstore from './redux/store/store.js';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './page/app.js'
-const store = createstore();
+import App from './page/app.js';
+import appReducer from './redux/reducer/appReducer';
+const appstore = createstore(appReducer);
 const app = document.createElement('div');
 document.body.appendChild(app);
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={appstore}>
         <App />
     </Provider>, app);
