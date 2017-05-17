@@ -1,15 +1,16 @@
 import React from 'react';
 class Header extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-		}
-	}
-	render() {
-		return (
+    }
+  }
+
+  render() {
+    return (
             <div>{this.props.musicName}</div>
-		)
-	}
+    )
+  }
 }
 export default Header;
