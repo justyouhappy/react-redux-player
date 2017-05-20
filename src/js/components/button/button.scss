@@ -1,0 +1,43 @@
+.play-control{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    height: 60px;
+    background-color: rgba(0,0,0,.2);
+    display: flex;
+    .btn-wrap{
+        flex:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            display: block;
+            width:20px;
+            height:20px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+        .like-btn{
+            background-image: url(../../../img/icon-like.png);
+            &.checked{
+               background-image: url(../../../img/icon-like-solid.png);
+            }
+        }
+        .prev-btn{
+            background-image: url(../../../img/icon-prev.png);
+        }
+        .play-btn{
+            background-image: url(../../../img/icon-play.png);
+            &.playing{
+                background-image: url(../../../img/icon-pause.png);
+            }
+        }
+        .next-btn{
+            background-image: url(../../../img/icon-next.png);
+        }
+        .list-btn{
+            background-image: url(../../../img/icon-list.png);
+        }
+    }
+}

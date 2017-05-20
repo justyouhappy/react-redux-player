@@ -1,2 +1,3 @@
 import makeActionCreator from '../../common/actionCreator';
-export const setMusicName = makeActionCreator('changeName', 'param');
+export const setSong = makeActionCreator('changSone', 'param');
+export const setSrc = makeActionCreator('changeSrc', 'param');
