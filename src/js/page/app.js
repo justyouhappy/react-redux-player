@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Header from '../components/header'
+import Header from '../components/header/header'
 import * as actions from '.././redux/action/appAction';
 class App extends React.Component {
 	constructor(props) {
@@ -11,19 +11,18 @@ class App extends React.Component {
 	setvalue(e) {
 		let value = e.target.value;
 		this.props.actions.setMusicName(value);
-		console.log(this.props);
 	}
 	render() {
 		return (
-            <div onClick={this.setvalue}>
-                <Header musicName={this.props.musicName} ></Header>
-            </div>
+			<div className="content-wrap">
+				<Header musicName={this.props.musicName} ></Header>
+			</div>
 		);
 	}
 }
 App = connect((state) => state, (dispatch) => {
 	return {
-	    actions: bindActionCreators(actions, dispatch)
+		actions: bindActionCreators(actions, dispatch)
 	}
-} )(App);
+})(App);
 export default App

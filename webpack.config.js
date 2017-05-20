@@ -10,8 +10,18 @@ module.exports = {
 	},
 	module: {
 		rules: [
-            // { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },打包成单独的css
-            { test: /\.[(less)|(sass)]$/, use: ["style-loader", "css-loader", "less-loader", "sass-loader"] }, //若需要多种loader支持则用use，否则loader
+			{
+				test: /.(scss)|(css)$/, use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader', 'sass-loader']
+				})
+			},// 打包成单独的css
+			// {
+			// 	test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']
+			// }, // 若需要多种loader支持则用use，否则loader
+			// {
+			// 	test: /\.css$/, use: ['style-loader', 'css-loader']
+			// },
 			{
 				test: /\.jsx?$/,
 				loader: "babel-loader",
@@ -24,7 +34,7 @@ module.exports = {
 					]
 				}
 			},
-            { test: /\.(jpg|png)$/, use: ["url-loader"] }
+			{ test: /\.(jpg|png)$/, use: ['url-loader'] }
 		]
 	},
 	devServer: {
@@ -38,10 +48,7 @@ module.exports = {
 	},
 	plugins: [
 		providePlugin,
-		new webpack.NoEmitOnErrorsPlugin(),
-        // new ExtractTextPlugin({
-        //     filename: 'http://localhost:8080/static/bundle.css'
-        // })
+		new ExtractTextPlugin('bundle.css')
 	]
 }
 
