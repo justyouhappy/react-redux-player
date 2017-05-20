@@ -101,12 +101,8 @@ function blurImg(img, ele) {
 
     var imageData = canvas.toDataURL();
 
-<<<<<<< HEAD
     ele && ele.css('background-image', 'url(' + imageData + ')');
     return imageData;
 }
 export default blurImg;
-=======
-    ele.css('background-image', 'url(' + imageData + ')');
-}
->>>>>>> 80a396f06ae8152df38f32344bfe97b4557f51f8
+
