@@ -15,7 +15,7 @@ module.exports = {
 					fallback: 'style-loader',
 					use: ['css-loader', 'sass-loader']
 				})
-			},// 打包成单独的css
+			}, // 打包成单独的css
 			// {
 			// 	test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']
 			// }, // 若需要多种loader支持则用use，否则loader
