@@ -10,7 +10,7 @@ import App from './page/app.js';
 import appReducer from './redux/reducer/appReducer';
 const appstore = createstore(appReducer);
 const app = document.createElement('div');
-app.style.height = window.screen.availHeight + 'px';
+app.style.height = '100%';
 document.body.appendChild(app);
 ReactDOM.render(
     <Provider store={appstore}>

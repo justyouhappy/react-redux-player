@@ -18,10 +18,10 @@ class App extends React.Component {
 		}
 	}
 	componentDidMount() {
-		let  { indexReducer : {src} } = this.props;
+		let { indexReducer: {src} } = this.props;
 		let image = new Image();
 		image.src = src
-		image.onload =  () => {
+		image.onload = () => {
 			let srcs = blurImg(image);
 			this.setState({
 				src: srcs
@@ -29,13 +29,14 @@ class App extends React.Component {
 		}
 	}
 	render() {
-		let  { indexReducer : { src, SongInfo: song } } = this.props;
+		const { indexReducer: { SongInfo: song, src: clearsrc } } = this.props;
+		const { src } = this.state;
 		return (
 
-			<div className="content-wrap" style={{backgroundImage:`url(${src})`}}>
+			<div className="content-wrap" style={{backgroundImage: `url(${src})`}}>
 				<div className="content">
-					<Header musicName={song.name || 'xxx'} src={src}></Header>
-					<SongImage src={src}></SongImage>
+					<Header musicName={song.name || 'xxx'} src={clearsrc}></Header>
+					<SongImage src={clearsrc}></SongImage>
 					<SongInfo Song={song} ></SongInfo>
 					<PlayArea></PlayArea>
 					<Button></Button>

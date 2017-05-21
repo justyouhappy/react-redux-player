@@ -1,11 +1,12 @@
-.play-control{
+.play-control {
     position: absolute;
     bottom:0;
+    // margin-top: 20px;
     width:100%;
     height: 60px;
     background-color: rgba(0,0,0,.2);
     display: flex;
-    .btn-wrap{
+    .btn-wrap {
         flex:1;
         display: flex;
         justify-content: center;
@@ -18,25 +19,25 @@
             background-repeat: no-repeat;
             background-position: 50%;
         }
-        .like-btn{
+        .like-btn {
             background-image: url(../../../img/icon-like.png);
             &.checked{
                background-image: url(../../../img/icon-like-solid.png);
             }
         }
-        .prev-btn{
+        .prev-btn {
             background-image: url(../../../img/icon-prev.png);
         }
-        .play-btn{
+        .play-btn {
             background-image: url(../../../img/icon-play.png);
-            &.playing{
+            &.playing {
                 background-image: url(../../../img/icon-pause.png);
             }
         }
-        .next-btn{
+        .next-btn {
             background-image: url(../../../img/icon-next.png);
         }
-        .list-btn{
+        .list-btn {
             background-image: url(../../../img/icon-list.png);
         }
     }

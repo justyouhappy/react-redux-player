@@ -2,8 +2,8 @@ import React from 'react';
 import './button.scss';
 class Button extends React.Component {
 
-  render() {
-    return (
+	render() {
+		return (
       <div className="play-control">
         <div className="btn-wrap">
           <span className="like-btn"></span>
@@ -21,7 +21,7 @@ class Button extends React.Component {
           <span className="list-btn"></span>
         </div>
       </div>
-    )
-  }
+		)
+	}
 }
 export default Button;
