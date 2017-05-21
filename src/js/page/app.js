@@ -8,6 +8,8 @@ import PlayArea from '../components/playArea/playArea';
 import Button from '../components/Button/Button';
 import * as actions from '../redux/action/appAction';
 import blurImg from '../common/gaussBlur';
+import MyAudio from '../components/Audio';
+import fetchdata from '../common/fetch';
 import '../../scss/app.scss';
 
 class App extends React.Component {
@@ -16,9 +18,31 @@ class App extends React.Component {
 		this.state = {
 			src: ''
 		}
+		this.BlurImg = this.BlurImg.bind(this);
+		this.setProgress=this.setProgress.bind(this);
 	}
 	componentDidMount() {
-		let { indexReducer: {src} } = this.props;
+		fetchdata('../data/data.json').then(data => {
+			this.audio = new MyAudio(data, this.setProgress);
+			this.BlurImg(data[0].image);
+			this.props.actions.setEndTime(this.audio.duration);
+			this.props.actions.setSrc(data[0].image);
+			this.props.actions.setSong({
+				name: data[0].song,
+				singerName: data[0].singer,
+				albumName: data[0].album,
+				rhythm: data[0].rhythm,
+				lyric: data[0].lyric
+			});
+		})
+		
+	}
+	componentWillReceiveProps(nextProps) {
+		if(this.props.indexReducer.src != nextProps.indexReducer.src) {
+			this.BlurImg(nextProps.indexReducer.src);
+		}
+	}
+	BlurImg(src) {
 		let image = new Image();
 		image.src = src
 		image.onload = () => {
@@ -28,8 +52,25 @@ class App extends React.Component {
 			})
 		}
 	}
+	setProgress(stop) {
+		if(stop) {
+			cancelAnimationFrame(this.frameId); 
+		} else {
+			cancelAnimationFrame(this.frameId);        
+			let frame = () => {
+				if (this.audio.music.currentTime < this.audio.duration) {
+					this.props.actions.setNowTime(~~this.audio.music.currentTime);
+					this.frameId = requestAnimationFrame(frame);
+				} else { 
+					this.props.actions.setNowTime(0);
+					cancelAnimationFrame(this.frameId);
+				}
+			}
+			frame();
+		}
+    }
 	render() {
-		const { indexReducer: { SongInfo: song, src: clearsrc } } = this.props;
+		const { indexReducer: { SongInfo: song, src: clearsrc ,nowTime, endTime}, actions } = this.props;
 		const { src } = this.state;
 		return (
 
@@ -38,8 +79,8 @@ class App extends React.Component {
 					<Header musicName={song.name || 'xxx'} src={clearsrc}></Header>
 					<SongImage src={clearsrc}></SongImage>
 					<SongInfo Song={song} ></SongInfo>
-					<PlayArea></PlayArea>
-					<Button></Button>
+					<PlayArea nowTime={nowTime} endTime={endTime}></PlayArea>
+					<Button audio={this.audio||{}} actions={actions} BlurImg={this.BlurImg}></Button>
 				</div>
 			</div>
 		);

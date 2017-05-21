@@ -1,3 +1,26 @@
+p,h1,h2,h3,h4,h5,div,a{
+    color:#000;
+    font:14px/20px Helvetica,sans-serif,arial;
+    margin: 0;
+}
+ul,li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+html,
+body{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font:14px/20px Helvetica,sans-serif,arial;
+}
 .content-wrap {
     width:100%;
     height: 100%;
