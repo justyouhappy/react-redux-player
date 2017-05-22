@@ -19,7 +19,7 @@ class App extends React.Component {
 			src: ''
 		}
 		this.BlurImg = this.BlurImg.bind(this);
-		this.setProgress=this.setProgress.bind(this);
+		this.setProgress = this.setProgress.bind(this);
 	}
 	componentDidMount() {
 		fetchdata('../data/data.json').then(data => {
@@ -35,7 +35,6 @@ class App extends React.Component {
 				lyric: data[0].lyric
 			});
 		})
-		
 	}
 	componentWillReceiveProps(nextProps) {
 		if(this.props.indexReducer.src != nextProps.indexReducer.src) {
