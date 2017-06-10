@@ -1,7 +1,7 @@
 [
     {
-        "image": "./source/img/album1.jpeg",
-        "audio": "./source/audio/audio1.mp3",
+        "image": "./react-redux-player/source/img/album1.jpeg",
+        "audio": "./react-redux-player/source/audio/audio1.mp3",
         "song": "丑八怪",
         "rhythm": "李荣浩",
         "lyric": "甘世佳",
@@ -10,8 +10,8 @@
         "duration": 248
     },
     {
-        "image": "./source/img/album2.jpeg",
-        "audio": "./source/audio/audio2.mp3",
+        "image": "./react-redux-player/source/img/album2.jpeg",
+        "audio": "./react-redux-player/source/audio/audio2.mp3",
         "song": "你还要我怎样",
         "rhythm": "薛之谦",
         "lyric": "薛之谦",
@@ -20,8 +20,8 @@
         "duration": 310
     },
     {
-        "image": "./source/img/album3.jpeg",
-        "audio": "./source/audio/audio3.mp3",
+        "image": "./react-redux-player/source/img/album3.jpeg",
+        "audio": "./react-redux-player/source/audio/audio3.mp3",
         "song": "认真的雪",
         "rhythm": "薛之谦",
         "lyric": "薛之谦",
@@ -30,8 +30,8 @@
         "duration": 255
     },
     {
-        "image": "./source/img/album4.jpeg",
-        "audio": "./source/audio/audio4.mp3",
+        "image": "./react-redux-player/source/img/album4.jpeg",
+        "audio": "./react-redux-player/source/audio/audio4.mp3",
         "song": "演员",
         "rhythm": "薛之谦",
         "lyric": "薛之谦",
@@ -40,8 +40,8 @@
         "duration": 261
     },
     {
-        "image": "./source/img/album5.jpeg",
-        "audio": "./source/audio/audio5.mp3",
+        "image": "./react-redux-player/source/img/album5.jpeg",
+        "audio": "./react-redux-player/source/audio/audio5.mp3",
         "song": "2 soon",
         "rhythm": "我哪知道啊",
         "lyric": "我也不知道",
