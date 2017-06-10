@@ -6,12 +6,19 @@ class Button extends React.Component {
   constructor(props) {
 		super(props);
 		this.state = {
-			like: false,
-      playing: false
+      playing: false,
+      like: props.audio.like
 		}
     this.Play = this.Play.bind(this);
     this.PlayPre = this.PlayPre.bind(this);
     this.PlayNext = this.PlayNext.bind(this);
+    this.ToFollow = this.ToFollow.bind(this);
+    this.renderAudio = this.renderAudio.bind(this);
+	}
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.audio.autoplay) {
+      this.setState({playing: true})
+    }
 	}
   PlayPre() {
     this.props.audio.playPre();
@@ -21,8 +28,12 @@ class Button extends React.Component {
     this.props.audio.playNext();
     this.renderAudio();
   }
+  ToFollow() {
+    this.props.audio.setLike();
+    this.setState({like : !this.state.like});
+  }
   renderAudio() {
-    let { actions: {setSrc, setSong}, audio: {datalist: data, index} } = this.props;
+    let { actions: {setSrc, setSong}, audio: {datalist: data, index, like} } = this.props;
     setSrc(data[index].image);
     setSong({
       name: data[index].song,
@@ -31,7 +42,7 @@ class Button extends React.Component {
       rhythm: data[index].rhythm,
       lyric: data[index].lyric
     });
-
+    this.setState({ like: this.props.audio.like });
   }
   Play() {
     !this.state.playing ? this.props.audio.play() : this.props.audio.pause();
@@ -41,8 +52,8 @@ class Button extends React.Component {
     let { like, playing } = this.state;
 		return (
       <div className="play-control">
-        <div className="btn-wrap" onClick={()=>this.setState({like: !like})}>
-          <span className={classnames("like-btn", {"checked": like})}></span>
+        <div className="btn-wrap" onClick={this.ToFollow}>
+          <span className={classnames("like-btn", {"checked": this.state.like})}></span>
         </div>
         <div className="btn-wrap" onClick={this.PlayPre}>
           <span className="prev-btn"></span>
@@ -53,7 +64,7 @@ class Button extends React.Component {
         <div className="btn-wrap" onClick={this.PlayNext}>
           <span className="next-btn"></span>
         </div>
-        <div className="btn-wrap">
+        <div className="btn-wrap" onClick={() => {this.props.actions.setShow(true)}}>
           <span className="list-btn"></span>
         </div>
       </div>

@@ -6,17 +6,20 @@ import SongImage from '../components/songImage/SongImage';
 import SongInfo from '../components/SongInfo/SongInfo';
 import PlayArea from '../components/playArea/playArea';
 import Button from '../components/Button/Button';
+import PlayList from '../components/playList/playList';
 import * as actions from '../redux/action/appAction';
 import blurImg from '../common/gaussBlur';
 import MyAudio from '../components/Audio';
 import fetchdata from '../common/fetch';
 import '../../scss/app.scss';
 
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			src: ''
+			src: '',
+			renderAudio: ()=>{}
 		}
 		this.BlurImg = this.BlurImg.bind(this);
 		this.setProgress = this.setProgress.bind(this);
@@ -34,7 +37,9 @@ class App extends React.Component {
 				rhythm: data[0].rhythm,
 				lyric: data[0].lyric
 			});
-		})
+		});
+		this.setState({renderAudio: this.btn.renderAudio});
+		
 	}
 	componentWillReceiveProps(nextProps) {
 		if(this.props.indexReducer.src != nextProps.indexReducer.src) {
@@ -69,7 +74,7 @@ class App extends React.Component {
 		}
     }
 	render() {
-		const { indexReducer: { SongInfo: song, src: clearsrc ,nowTime, endTime}, actions } = this.props;
+		const { indexReducer: { SongInfo: song, src: clearsrc ,nowTime, endTime, show}, actions } = this.props;
 		const { src } = this.state;
 		return (
 
@@ -78,8 +83,9 @@ class App extends React.Component {
 					<Header musicName={song.name || 'xxx'} src={clearsrc}></Header>
 					<SongImage src={clearsrc}></SongImage>
 					<SongInfo Song={song} ></SongInfo>
-					<PlayArea nowTime={nowTime} endTime={endTime}></PlayArea>
-					<Button audio={this.audio||{}} actions={actions} BlurImg={this.BlurImg}></Button>
+					<PlayArea audio={this.audio||{}} nowTime={nowTime} endTime={endTime} setNowTime={actions.setNowTime} setProgress={this.setProgress}></PlayArea>
+					<Button audio={this.audio||{}} ref={c => this.btn = c} actions={actions} BlurImg={this.BlurImg}></Button>
+					<PlayList audio={this.audio||{}} renderAudio={this.state.renderAudio} actions={actions} show={show}></PlayList>
 				</div>
 			</div>
 		);
