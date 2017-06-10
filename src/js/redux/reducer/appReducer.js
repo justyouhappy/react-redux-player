@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 const defaultState = {
-	src : '../../source/img/album3.jpeg',
+	src : '',
 	SongInfo: {},
 	nowTime: 0,
 	endTime: 0,
