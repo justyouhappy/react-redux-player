@@ -1,7 +1,7 @@
 [
     {
         "image": "./source/img/album1.jpeg",
-        "audio": "./react-redux-player/source/audio/audio1.mp3",
+        "audio": "./source/audio/audio1.mp3",
         "song": "丑八怪",
         "rhythm": "李荣浩",
         "lyric": "甘世佳",
