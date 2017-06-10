@@ -33,8 +33,9 @@ class Button extends React.Component {
     this.setState({like : !this.state.like});
   }
   renderAudio() {
-    let { actions: {setSrc, setSong}, audio: {datalist: data, index, like} } = this.props;
+    let { actions: {setSrc, setSong, setNowTime}, audio: {datalist: data, index, like} } = this.props;
     setSrc(data[index].image);
+    setNowTime(0);
     setSong({
       name: data[index].song,
       singerName: data[index].singer,
