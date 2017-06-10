@@ -25,7 +25,7 @@ class App extends React.Component {
 		this.setProgress = this.setProgress.bind(this);
 	}
 	componentDidMount() {
-		fetchdata('/data/data.json').then(data => {
+		fetchdata('./data/data.json').then(data => {
 			this.audio = new MyAudio(data, this.setProgress);
 			this.BlurImg(data[0].image);
 			this.props.actions.setEndTime(this.audio.duration);
